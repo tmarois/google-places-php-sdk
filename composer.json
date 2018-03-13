@@ -6,8 +6,12 @@
 	"type": "package",
 	"licence": "MIT",
 
+    "require": {
+		"guzzlehttp/guzzle": "^6.3"
+	},
+
 	"require-dev": {
-		"satooshi/php-coveralls": "dev-master",
+		"satooshi/php-coveralls": "^2.0",
 		"phpunit/phpunit": "^6.0"
 	},
 
