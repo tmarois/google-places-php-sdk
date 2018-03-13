@@ -16,7 +16,7 @@ You will need a [Google API Client Key](https://developers.google.com/places/web
 
 [Composer](http://getcomposer.org/) to install package.
 
-Use `composer require tmarois/GooglePlacesAPI`
+Use `composer require tmarois/google-places-api`
 
 ## Basic Usage:
 
