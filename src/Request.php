@@ -53,7 +53,14 @@ class Request
         }
         else
         {
-            $this->output = json_decode($this->httpResponse->getBody(),1);
+            if ($this->builder->getFormat()=='json')
+            {
+                $this->output = json_decode($this->httpResponse->getBody(),1);
+            }
+            else
+            {
+                $this->output = $this->httpResponse->getBody();
+            }
 
             $this->throwAnError();
         }
@@ -72,7 +79,24 @@ class Request
             'key' => $this->builder->client()->getKey()
         ];
 
-        $this->httpResponse = (new HttpRequest())->request('GET', $this->builder->getPath(), ['query' => array_merge($queryOptions, $options)]);
+        $this->httpResponse = (new HttpRequest())->request('GET', $this->builder->getPath(), [
+            'query' => array_merge($queryOptions, $options),
+            'allow_redirects' => true
+        ]);
+
+        /*if ($this->builder->getFormat()=='json')
+        {
+            $this->httpResponse = (new HttpRequest())->request('GET', $this->builder->getPath(), [
+                'query' => array_merge($queryOptions, $options),
+                'allow_redirects' => true
+            ]);
+        }
+        else
+        {
+            $httpparams = http_build_query(array_merge($queryOptions, $options));
+
+            $this->output = file_get_contents($this->builder->getPath().'?'.$httpparams);
+        }*/
     }
 
 
@@ -97,7 +121,17 @@ class Request
             return true;
         }
 
-        throw new \Exception('Output format is not correct.');
+        if ($this->builder->getFormat()=='json')
+        {
+            throw new \Exception('Output format is not correct.');
+        }
+        else
+        {
+            if (is_null($this->output))
+            {
+                throw new \Exception('Nothing returned in output. NULL.');
+            }
+        }
     }
 
 
@@ -105,7 +139,7 @@ class Request
     * output
     *
     */
-    public function output($format = 'json')
+    public function output()
     {
         return $this->builder->response($this->output);
     }

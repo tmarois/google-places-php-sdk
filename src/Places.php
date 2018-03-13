@@ -20,6 +20,14 @@ class Places
 
 
     /**
+    * $apiFormat
+    *
+    * The Google API format
+    */
+    protected $apiFormat = 'json';
+
+
+    /**
     * $apiOptions
     *
     * The Google API Paramters to pass
@@ -68,12 +76,22 @@ class Places
 
 
     /**
+    * getFormat
+    *
+    */
+    public function getFormat()
+    {
+        return $this->apiFormat;
+    }
+
+
+    /**
     * options
     *
     */
     public function setOptions(array $options = [])
     {
-        $this->apiOptions = $options;
+        $this->apiOptions = array_merge($options, $this->apiOptions);
 
         return $this;
     }
@@ -83,9 +101,9 @@ class Places
     * response
     *
     */
-    public function response(array $output = [])
+    public function response($output)
     {
-        return ($output) ?? [];
+        return ($output) ?? null;
     }
 
 
@@ -95,7 +113,7 @@ class Places
     */
     public function request()
     {
-        return (new Request($this))->output('json');
+        return (new Request($this))->output();
     }
 
 }

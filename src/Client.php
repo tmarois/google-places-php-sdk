@@ -46,9 +46,9 @@ class Client
     *
     * @see \GooglePlaces\placeDetails
     */
-    public function placeDetails()
+    public function placeDetails(string $id)
     {
-        return new PlaceDetails($this);
+        return new PlaceDetails($this, $id);
     }
 
 
@@ -57,9 +57,9 @@ class Client
     *
     * @see \GooglePlaces\placePhotos
     */
-    public function placePhotos()
+    public function placePhotos(string $id)
     {
-        return new PlacePhotos($this);
+        return new PlacePhotos($this, $id);
     }
 
 
