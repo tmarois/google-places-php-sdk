@@ -1,0 +1,19 @@
+{
+	"description": "The PHP Google Places API",
+	"keywords": ["google","places","googleplacesapi","placesapi","googlemaps"],
+	"name": "tmarois/GooglePlacesAPI",
+	"homepage": "https://github.com/tmarois/GooglePlacesAPI",
+	"type": "package",
+	"licence": "MIT",
+
+	"require-dev": {
+		"satooshi/php-coveralls": "dev-master",
+		"phpunit/phpunit": "^6.0"
+	},
+
+	"autoload": {
+		"psr-4": {
+			"GooglePlaces\\": "src/"
+		}
+	}
+}
