@@ -43,7 +43,7 @@ class PlaceSearch extends Places
     * response
     *
     */
-    public function response(array $output = [])
+    public function response($output = [])
     {
         return ($output['results']) ?? [];
     }
