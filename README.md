@@ -16,7 +16,7 @@ You will need a [Google API Client Key](https://developers.google.com/places/web
 
 [Composer](http://getcomposer.org/) to install package.
 
-Use `composer require tmarois/google-places-api`
+Use `composer require tmarois/google-places-api dev-master`
 
 ## Basic Usage:
 
@@ -39,6 +39,9 @@ $photoId = 'CmRaAAAAoKx6KQyrDEJ0si1ekan0QaZ6Y02NpXwBFa1ncLaKhZECbFa';
 $client->placePhotos($photoId,[450,450])->request()->save(__DIR__.'/images');
 
 ```
+
+## Resources:
+* [Usage Limits](https://developers.google.com/places/web-service/usage)
 
 ## Contributions
 
