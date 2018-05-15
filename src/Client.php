@@ -57,9 +57,9 @@ class Client
     *
     * @see \GooglePlaces\placePhotos
     */
-    public function placePhotos(string $id)
+    public function placePhotos(string $id, $sizes = [])
     {
-        return new PlacePhotos($this, $id);
+        return new PlacePhotos($this, $id, $sizes);
     }
 
 
